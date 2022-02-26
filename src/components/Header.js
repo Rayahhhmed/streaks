@@ -1,10 +1,10 @@
-import { Button, ButtonBase } from '@mui/material';
-import { DeleteIcon } from '@mui/icons-material/Delete';
+import { Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Header = ({ title }) => {
   return (
     <div>
-      <Button variant='outlined' startIcon={<DeleteIcon/>}>{title}</Button>
+      <Button variant='outlined'>{title} <DeleteIcon /></Button>
     </div>
   )
 }
