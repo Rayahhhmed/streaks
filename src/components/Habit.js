@@ -8,8 +8,10 @@ export default function Habit({ habit }) {
         {habit.text}
       </h4>
       <h4 className='yes'>
-        {habit.streak} days
-        <Checkbox />
+        {habit.streak}
+        {habit.targetStreak ? `/${habit.targetStreak} ` : ' '} 
+        days
+        <Checkbox style={{ height: 15 }}/>
       </h4>
     </div>
   )

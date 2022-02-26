@@ -15,9 +15,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background: #f4f4f4; */
   margin: 10px;
-  padding: 10px 20px;
+  padding: 0 20px;
   border-style: solid;
   border-color: #4CC9F0;
   border-radius: 10px;
