@@ -1,2 +1,28 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 
+body {
+  font-family: 'Roboto', 'Comic Sans MS';
+}
+
+.container {
+    /* 500px is the minimum width of a chrome window */
+  max-width: 500px;
+  padding: 20px;
+}
+
+
+.habit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: #f4f4f4; */
+  margin: 10px;
+  padding: 10px 20px;
+  border-style: solid;
+  border-color: #4CC9F0;
+  border-radius: 10px;
+}
+
+.habit .yes {
+  align-self: flex-end;
+}

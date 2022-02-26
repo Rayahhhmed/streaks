@@ -8,20 +8,20 @@ function App() {
     {
       id: 1,
       text: 'have a proper sleep schedule',
-      streak: 3,
+      streak: 13,
       targetStreak: 14,
       completed: false,
     },
     {
       id: 2,
-      text: 'be happy',
-      streak: 3,
+      text: 'be happy ;(',
+      streak: 1,
       targetStreak: null,
       completed: false,
     },
   ])
   return (
-    <div className="App">
+    <div className="container">
       <Header title="welcome angella to trainee 3"/>
       <Habits habits={habits}/>
     </div>
