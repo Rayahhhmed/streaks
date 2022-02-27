@@ -8,20 +8,21 @@ function App() {
   const [habits, setHabits] = useState([
     {
       id: 1,
-      text: 'have a proper sleep schedule',
+      text: 'Have a proper sleep schedule',
       streak: 13,
       targetStreak: 14,
       completed: false,
     },
     {
       id: 2,
-      text: 'be happy ;(',
+      text: 'Be happy ;(',
       streak: 1,
       targetStreak: null,
       completed: false,
     },
   ])
 
+  // Add a habit
   const addHabit = (habit) => {
     const id = Math.floor(Math.random() * 10000) + 1
     // Add a new ID field to the given habit object provided from the form submission
@@ -33,7 +34,7 @@ function App() {
   return (
     <div className="container">
       <Header title="welcome angella to trainee 3"/>
-      <Habits habits={habits}/>
+      <Habits habits={habits} onAdd={addHabit} />
     </div>
   );
 }
