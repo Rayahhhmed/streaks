@@ -1,4 +1,6 @@
 import { Checkbox } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
+import { Button } from "@mui/material";
 
 export default function Habit({ habit }) {
   return (
@@ -11,7 +13,9 @@ export default function Habit({ habit }) {
         {/* Ternary operator: only display targetStreak if it exists */}
         {habit.targetStreak ? `/${habit.targetStreak} ` : ' '} 
         days
-        <Checkbox />
+        <Button>
+          <EditIcon />
+        </Button>
       </h3>
     </div>
   )
