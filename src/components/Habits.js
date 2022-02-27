@@ -1,4 +1,6 @@
+import { Button } from '@mui/material'
 import Habit from './Habit'
+import AddHabitButton from './AddHabitButton'
 
 const Habits = ({ habits }) => {
   return (
@@ -6,6 +8,7 @@ const Habits = ({ habits }) => {
       {habits.map((habit) => (
         <Habit habit={habit}/>
       ))}
+      <AddHabitButton />
     </div>
   )
 }

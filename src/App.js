@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Habits from './components/Habits'
 
 function App() {
+  // Predefined habits for now
   const [habits, setHabits] = useState([
     {
       id: 1,
@@ -20,6 +21,15 @@ function App() {
       completed: false,
     },
   ])
+
+  const addHabit = (habit) => {
+    const id = Math.floor(Math.random() * 10000) + 1
+    // Add a new ID field to the given habit object provided from the form submission
+    const newHabit = {id, ...habit}
+    // Alter state by appending the new habit object to the list with the spread operator
+    setHabits([...habits, newHabit])
+  }
+
   return (
     <div className="container">
       <Header title="welcome angella to trainee 3"/>

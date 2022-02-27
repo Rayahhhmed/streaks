@@ -5,23 +5,30 @@ body {
 }
 
 .container {
-    /* 500px is the minimum width of a chrome window */
+  /* 500px is the minimum width of a chrome window */
   max-width: 500px;
   padding: 20px;
 }
 
-
 .habit {
+  /* Each habit box is a flexbox */
   display: flex;
+  /* Vertically center the text and the checkbox */
   align-items: center;
+  /* Have space between the habit text and the streak text */
   justify-content: space-between;
   margin: 10px;
   padding: 0 20px;
   border-style: solid;
   border-color: #4CC9F0;
   border-radius: 10px;
+  height: 50px;
 }
 
-.habit .yes {
-  align-self: flex-end;
+.addHabitButton {
+  margin: 10px;
+  border-style: solid;
+  border-color: #4CC9F0;
+  border-radius: 10px;
+  height: 50px;
 }

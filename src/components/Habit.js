@@ -1,18 +1,18 @@
 import { Checkbox } from "@mui/material";
 
-
 export default function Habit({ habit }) {
   return (
     <div className='habit'>
-      <h4>
+      <h3>
         {habit.text}
-      </h4>
-      <h4 className='yes'>
+      </h3>
+      <h3 className='streak'>
         {habit.streak}
+        {/* Ternary operator: only display targetStreak if it exists */}
         {habit.targetStreak ? `/${habit.targetStreak} ` : ' '} 
         days
-        <Checkbox style={{ height: 15 }}/>
-      </h4>
+        <Checkbox />
+      </h3>
     </div>
   )
 }
