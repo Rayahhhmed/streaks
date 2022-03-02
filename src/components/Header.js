@@ -1,19 +1,25 @@
-// import { Button } from '@mui/material';
+import { Button } from '@mui/material';
 // import DeleteIcon from '@mui/icons-material/Delete';
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import Box from '@mui/material/Box';
+
 import { spacing } from '@mui/system';
 
 
 const Header = ({ title }) => {
   return (
     <>
-    <Typography variant="h4" color="primary" id="title">
-      STREAKS
-    </Typography>
-    <ColoredLine color="black" />
+    <div id="myprofilebox">
+      <Typography variant="h4" color="primary" id="title">
+        STREAKS
+      </Typography>
+      
+      <Button variant="outlined" style={{textTransform: 'none'}}>My Profile</Button>
+      
+      </div>
+      <ColoredLine color="black" />
     </>
-    
   )
 }
 
