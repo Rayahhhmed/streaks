@@ -13,7 +13,7 @@ export default function Habit({ habit, onEdit }) {
     <div className='habitBox'>
       <div className='habit'>
         <h3 className='habitText'>
-          {habit.text}
+          {habit.text ? habit.text : 'Change me!'}
         </h3>
 
         <h3 className='streak'>
