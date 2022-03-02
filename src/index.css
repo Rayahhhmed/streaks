@@ -10,19 +10,35 @@ body {
   padding: 20px;
 }
 
-.habit {
+.habitBox {
   /* Each habit box is a flexbox */
-  display: flex;
+  /* display: flex; */
   /* Vertically center the text and the checkbox */
-  align-items: center;
+  /* align-items: center; */
   /* Have space between the habit text and the streak text */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin: 10px;
   padding: 0 20px;
   border-style: solid;
   border-color: #4CC9F0;
   border-radius: 10px;
+  /* height: 50px; */
+}
+
+.habit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 50px;
+}
+
+.editHabit {
+  display: flex;
+  /* Vertically center the text and the checkbox */
+  align-items: center;
+  /* Have space between the habit text and the streak text */
+  justify-content: space-between;
+  padding: 0 0 10px 0;
 }
 
 .addHabitButton {
@@ -30,5 +46,5 @@ body {
   border-style: solid;
   border-color: #4CC9F0;
   border-radius: 10px;
-  height: 50px;
+  /* height: 50px; */
 }
