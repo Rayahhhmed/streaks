@@ -3,3 +3,12 @@
 #title {
 	padding-left: 10px;
 }
+
+#myprofilebox {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* #container {
+	align-items: flex-end;
+} */
