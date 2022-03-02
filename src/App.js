@@ -4,8 +4,9 @@ import Header from './components/Header'
 import Habits from './components/Habits'
 
 function App() {
-  // Predefined habits for now
+  // Initialise habits to an empty list
   const [habits, setHabits] = useState([
+    // // Predefined habits for now
     // {
     //   id: 1,
     //   text: 'Have a proper sleep schedule',
@@ -17,7 +18,7 @@ function App() {
     //   id: 2,
     //   text: 'Be happy ;(',
     //   streak: 1,
-    //   targetStreak: null,
+    //   targetStreak: 0,
     //   completed: false,
     // },
   ])
@@ -29,15 +30,16 @@ function App() {
       id: Math.floor(Math.random() * 10000) + 1,
       text: "New Habit, Edit Me!",
       streak: 0,
-      targetStreak: null,
+      targetStreak: 0,
       completed: false,
     }
     // Alter state by appending the new habit object to the list with the spread operator
     setHabits([...habits, newHabit])
   }
 
-  const editHabit = (id, text, target) => {
-    setHabits(habits.map((habit) => habit.id === id ? {...habit, text: text, targetStreak: target} : habit))
+  // Edit the 
+  const editHabit = (id, text, targetStreak) => {
+    setHabits(habits.map((habit) => habit.id === id ? {...habit, text: text, targetStreak: targetStreak} : habit))
   }
 
   return (

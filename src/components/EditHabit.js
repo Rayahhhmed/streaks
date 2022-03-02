@@ -1,29 +1,40 @@
-import { Input } from '@mui/material';
-import { Button } from '@mui/material';
+import { Input, InputLabel, Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useState } from 'react';
 
 const EditHabit = ({ habit, onEdit }) => {
   const [text, setText] = useState(habit.text)
-  const [target, setTarget] = useState(habit.targetStreak)
+  const [targetStreak, setTargetStreak] = useState(habit.targetStreak)
 
   return (
     <div className='editHabit'>
+      <div>
+        <InputLabel>Habit Name</InputLabel>
         <Input 
           type='text'
           placeholder='New Habit Name'
           value={text}
           onChange={(e) => setText(e.target.value)}
+          style={{ width: 125 }}
         />
+      </div>
+
+      <div>
+        <InputLabel>Target Streak</InputLabel>
         <Input
           type='number'
           placeholder='Target Streak' 
-          value={target}
+          value={targetStreak}
           size='medium'
           min='1'
-          onChange={(e) => setTarget(e.target.value)}
-          style={{ width: 120 }}
+          onChange={(e) => setTargetStreak(e.target.value)}
+          style={{ width: 110 }}
         />
-        <Button onClick={() => onEdit(habit.id, text, target)}>Edit Habit</Button>
+      </div>
+        <Button onClick={() => onEdit(habit.id, text, targetStreak)}>Edit Habit</Button>
+        <Button>
+          <DeleteIcon style={{ color: 'red' }}/>
+        </Button>
     </div>
   )
 }
