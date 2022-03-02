@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
 import { Button } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
 import EditHabit from './EditHabit';
 
-export default function Habit({ habit }) {
+export default function Habit({ habit, onEdit }) {
   const [showEdit, setShowEdit] = useState(false)
   const toggleEdit = () => {
     setShowEdit(!showEdit);
@@ -12,21 +12,24 @@ export default function Habit({ habit }) {
   return (
     <div className='habitBox'>
       <div className='habit'>
-        <h3>
+        <h3 className='habitText'>
           {habit.text}
         </h3>
+
         <h3 className='streak'>
-          {habit.streak}
-          {/* Ternary operator: only display targetStreak if it exists */}
-          {habit.targetStreak ? `/${habit.targetStreak} ` : ' '} 
-          days
+          <div>
+            {habit.streak}
+            {/* Ternary operator: only display targetStreak if it exists */}
+            {habit.targetStreak ? `/${habit.targetStreak} ` : ' '} 
+            days
+          </div>
           <Button onClick={toggleEdit}>
             <EditIcon />
           </Button>
         </h3>
       </div>
 
-      {showEdit && <EditHabit />}
+      {showEdit && <EditHabit habit={habit} onEdit={onEdit} />}
     </div>
   )
 }
