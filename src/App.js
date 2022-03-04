@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <div>
       <Header title="welcome angella to trainee 3"/>
       <Habits habits={habits} onAdd={addHabit} onEdit={editHabit} />
     </div>
