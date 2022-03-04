@@ -1,2 +1,62 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 
+body {
+  font-family: 'Roboto', 'Comic Sans MS';
+}
+
+.container {
+  /* 500px is the minimum width of a chrome window */
+  max-width: 500px;
+  padding: 20px;
+}
+
+/* The box containing habit information as well as the ability to edit if toggled on */
+.habitBox {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 0 5px 0 20px;
+  border-style: solid;
+  border-color: #4CC9F0;
+  border-radius: 10px;
+}
+
+/* The habit text, streak information and the ablity to edit and check them off */
+.habit {
+  /* Each habit box is a flexbox */
+  display: flex;
+  /* Have space between the habit text and the streak text */
+  justify-content: space-between;
+  /* Vertically center the text and the checkbox */
+  align-items: center;
+  /* height: 50px; */
+}
+
+.habitText {
+  overflow: auto;
+}
+
+/* The right portion of the div: streak info, edit button and check button */
+.streak {
+  display: flex;
+  align-items: center;
+}
+
+/* The div that appears when edit is toggled on */
+.editHabit {
+  display: flex;
+  /* Vertically center the text and the checkbox */
+  align-items: center;
+  /* Have space between the habit text and the streak text */
+  justify-content: space-between;
+  padding: 0 0 10px 0;
+}
+
+/* The add habit button that appears below all the habits */
+.addHabitButton {
+  margin: 10px;
+  border-style: solid;
+  border-color: #4CC9F0;
+  border-radius: 10px;
+  /* height: 50px; */
+}
