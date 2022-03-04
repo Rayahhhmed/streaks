@@ -7,10 +7,10 @@ import Box from '@mui/material/Box';
 import { spacing } from '@mui/system';
 
 
-const Header = ({ title }) => {
+const Header = () => {
   return (
     <>
-    <div id="myprofilebox">
+    <div className="myprofilebox">
       <Typography variant="h4" color="primary" id="title">
         STREAKS
       </Typography>
