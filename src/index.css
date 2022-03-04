@@ -60,3 +60,14 @@ body {
   border-radius: 10px;
   /* height: 50px; */
 }
+
+/* Moved the title 'STREAKS' a bit to the right */
+.title {
+	padding-left: 10px;
+}
+
+/* Move the 'My Profile' box to the right corner of page */
+.myprofilebox {
+	display: flex;
+	justify-content: space-between;
+}
