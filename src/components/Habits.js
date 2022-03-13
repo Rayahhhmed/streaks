@@ -1,11 +1,11 @@
 import Habit from './Habit'
 import AddHabitButton from './AddHabitButton'
 
-const Habits = ({ habits, onAdd, onEdit }) => {
+const Habits = ({ habits, onAdd, onEdit, onDelete }) => {
   return (
     <div className="container">
       {habits.map((habit) => (
-        <Habit habit={habit} key={habit.id} onEdit={onEdit} />
+        <Habit habit={habit} key={habit.id} onEdit={onEdit} onDelete={onDelete}/>
       ))}
       <AddHabitButton onAdd={onAdd} />
     </div>

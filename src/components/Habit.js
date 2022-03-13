@@ -4,7 +4,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import EditHabit from './EditHabit';
 
-export default function Habit({ habit, onEdit }) {
+export default function Habit({ habit, onEdit, onDelete }) {
   const [showEdit, setShowEdit] = useState(false)
   const toggleEdit = () => {
     setShowEdit(!showEdit);
@@ -28,14 +28,14 @@ export default function Habit({ habit, onEdit }) {
           <Button onClick={toggleEdit}>
             <EditIcon />
           </Button>
-          <Button>
-            <CheckIcon style={{ color: 'green' }} />
+          <Button>Complete
+            {/* <CheckIcon style={{ color: 'green' }} /> */}
           </Button>
         </h3>
       </div>
 
       {/* Only show the EditHabit component if toggled on */}
-      {showEdit && <EditHabit habit={habit} onEdit={onEdit} />}
+      {showEdit && <EditHabit habit={habit} onEdit={onEdit} onDelete={onDelete}/>}
     </div>
   )
 }

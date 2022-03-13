@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <>
     <div className="myprofilebox">
-      <Typography variant="h4" color="primary" id="title">
+      <Typography variant="h4" color="primary" className="title">
         STREAKS
       </Typography>
       
