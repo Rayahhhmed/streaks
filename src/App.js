@@ -42,7 +42,7 @@ function App() {
     setHabits(habits.map((habit) => habit.id === id ? {...habit, text: text, targetStreak: targetStreak} : habit))
   }
 
-  // Delete Task 
+  // Delete Habit 
   const deleteHabit = (id) => {
     setHabits(habits.filter((habit) => habit.id !== id))
   }
