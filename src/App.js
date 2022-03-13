@@ -1,7 +1,7 @@
-import './index.css';
-import { useState } from 'react'
-import Header from './components/Header'
-import Habits from './components/Habits'
+import "./index.css";
+import { useState } from "react";
+import Header from "./components/Header";
+import Habits from "./components/Habits";
 
 function App() {
   // Initialise habits to an empty list
@@ -21,7 +21,7 @@ function App() {
     //   targetStreak: 0,
     //   completed: false,
     // },
-  ])
+  ]);
 
   // Add a habit
   const addHabit = (habit) => {
@@ -32,26 +32,36 @@ function App() {
       streak: 0,
       targetStreak: 0,
       completed: false,
-    }
+    };
     // Alter state by appending the new habit object to the list with the spread operator
-    setHabits([...habits, newHabit])
-  }
+    setHabits([...habits, newHabit]);
+  };
 
-  // Edit the 
+  // Edit the
   const editHabit = (id, text, targetStreak) => {
-    setHabits(habits.map((habit) => habit.id === id ? {...habit, text: text, targetStreak: targetStreak} : habit))
-  }
+    setHabits(
+      habits.map((habit) =>
+        habit.id === id
+          ? { ...habit, text: text, targetStreak: targetStreak }
+          : habit
+      )
+    );
+  };
 
-  // Delete Habit 
+  // Delete Habit
   const deleteHabit = (id) => {
-    setHabits(habits.filter((habit) => habit.id !== id))
-  }
+    setHabits(habits.filter((habit) => habit.id !== id));
+  };
 
   return (
     <div>
-      <Header title="welcome angella to trainee 3"/>
-      <Habits habits={habits} onAdd={addHabit} onEdit={editHabit} 
-        onDelete={deleteHabit} />
+      <Header title="welcome angella to trainee 3" />
+      <Habits
+        habits={habits}
+        onAdd={addHabit}
+        onEdit={editHabit}
+        onDelete={deleteHabit}
+      />
     </div>
   );
 }
