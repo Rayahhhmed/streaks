@@ -28,7 +28,7 @@ function App() {
   const addHabit = (habit) => {
     // Add a new ID field to the given habit object provided from the form submission
     const newHabit = {
-      id: model.id = nanoid(),
+      id: nanoid(),
       text: "New Habit, Edit Me!",
       streak: 0,
       targetStreak: 0,
