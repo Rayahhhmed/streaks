@@ -2,6 +2,7 @@ import "./index.css";
 import { useState } from "react";
 import Header from "./components/Header";
 import Habits from "./components/Habits";
+import { nanoid } from 'nanoid'
 
 function App() {
   // Initialise habits to an empty list
@@ -27,7 +28,7 @@ function App() {
   const addHabit = (habit) => {
     // Add a new ID field to the given habit object provided from the form submission
     const newHabit = {
-      id: Math.floor(Math.random() * 10000) + 1,
+      id: model.id = nanoid(),
       text: "New Habit, Edit Me!",
       streak: 0,
       targetStreak: 0,
