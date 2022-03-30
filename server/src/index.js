@@ -25,7 +25,7 @@ app.get("/habits/:id", (req, res) => {
   // Find the habit with id in habits. habit.id is a string, created with nanoid()
   const found = habits.find((habit) => habit.id === req.params.id);
   
-  if (found === req.params.id) {
+  if (found) {
     // If a habit with the id is found, display on page.
     res.json(found);
   } else {
@@ -43,7 +43,7 @@ app.put("/habits/:id", (req, res) => {});
 app.delete("/habits/:id", (req, res) => {
   const deleted_habit = habits.find((habit) => habit.id === req.params.id);
   if (deleted_habit) {
-    habits.filter((habit) => habit.id !== req.params.id);
+    habits = habits.filter((habit) => habit.id !== req.params.id);
     res.json(deleted_habit);
   } else {
     res
@@ -52,7 +52,7 @@ app.delete("/habits/:id", (req, res) => {
   }
 });
 
-const habits = initHabits();
+let habits = initHabits();
 console.log(habits);
 
 app.listen(PORT, () => {
