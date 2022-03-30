@@ -7,21 +7,21 @@ import { nanoid } from 'nanoid'
 function App() {
   // Initialise habits to an empty list
   const [habits, setHabits] = useState([
-    // // Predefined habits for now
-    // {
-    //   id: 1,
-    //   text: 'Have a proper sleep schedule',
-    //   streak: 13,
-    //   targetStreak: 14,
-    //   completed: false,
-    // },
-    // {
-    //   id: 2,
-    //   text: 'Be happy ;(',
-    //   streak: 1,
-    //   targetStreak: 0,
-    //   completed: false,
-    // },
+    // Predefined habits for now
+    {
+      id: 1,
+      text: 'Have a proper sleep schedule',
+      streak: 13,
+      targetStreak: 14,
+      completed: false,
+    },
+    {
+      id: 2,
+      text: 'Be happy ;(',
+      streak: 1,
+      targetStreak: 0,
+      completed: false,
+    },
   ]);
 
   // Add a habit
