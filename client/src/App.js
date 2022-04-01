@@ -31,7 +31,7 @@ function App() {
       id: nanoid(),
       text: "New Habit, Edit Me!",
       streak: 0,
-      targetStreak: 0,
+      targetStreak: 1,
       completed: false,
       isEditing: true,
     };
