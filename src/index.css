@@ -6,7 +6,7 @@ body {
 
 .container {
   /* 500px is the minimum width of a chrome window */
-  max-width: 500px;
+  max-width: 600px;
   padding: 20px;
 }
 
