@@ -35,30 +35,35 @@ function App() {
       completed: false,
       isEditing: true,
     };
-    // useeffect for fetch
-    // Alter state by appending the new habit object to the list with the spread operator # Kel
-    // Click into editHabbit # Kel
-
-    // button should be create # Kel
 
     setHabits([...habits, newHabit]);
   };
 
-  // Edit the
+  // Edit the Habit
   const editHabit = (id, text, targetStreak) => {
     setHabits(
       habits.map((habit) =>
-        habit.id === id
-          ? { ...habit, text: text, targetStreak: targetStreak }
+        habit.id === id && targetStreak >= 0 && targetStreak >= habit.streak
+          ? { ...habit, text: text, targetStreak: parseInt(targetStreak, 10) }
           : habit
       )
-      // button should be edit # Kel
     );
   };
 
   // Delete Habit
   const deleteHabit = (id) => {
     setHabits(habits.filter((habit) => habit.id !== id));
+  };
+
+  // Increment Habit
+  const incrementHabit = (id) => {
+    setHabits(
+      habits.map((habit) =>
+        habit.id === id && habit.streak < habit.targetStreak
+          ? { ...habit, streak: habit.streak + 1}
+          : habit
+      )
+    );
   };
 
   return (
@@ -69,6 +74,7 @@ function App() {
         onAdd={addHabit}
         onEdit={editHabit}
         onDelete={deleteHabit}
+        onComplete={incrementHabit}
       />
     </div>
   );

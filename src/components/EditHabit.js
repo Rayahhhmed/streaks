@@ -2,7 +2,7 @@ import { Input, InputLabel, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 
-const EditHabit = ({ habit, onEdit, onDelete, toggleEdit }) => {
+const EditHabit = ({ habit, onEdit, onDelete }) => {
   const [text, setText] = useState(habit.text);
   const [targetStreak, setTargetStreak] = useState(habit.targetStreak);
 
@@ -31,10 +31,8 @@ const EditHabit = ({ habit, onEdit, onDelete, toggleEdit }) => {
           style={{ width: 110 }}
         />
       </div>
-      <Button onClick={() => {
-         onEdit(habit.id, text, targetStreak)
-         toggleEdit()}}>
-        {[habit.isCreated]  ? 'Create' : 'Save Changes' && (habit.isCreated = true)}
+      <Button onClick={() => onEdit(habit.id, text, targetStreak)}>
+        Save Changes
       </Button>
     </div>
   );
