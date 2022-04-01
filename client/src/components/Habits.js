@@ -1,7 +1,9 @@
 import Habit from "./Habit";
 import AddHabitButton from "./AddHabitButton";
 
-const Habits = ({ habits, onAdd, onEdit, onDelete }) => {
+
+const Habits = ({ habits, onAdd, onEdit, onDelete, onComplete, onReset}) => {
+
   return (
     <div className="container">
       {habits.map((habit) => (
@@ -10,6 +12,11 @@ const Habits = ({ habits, onAdd, onEdit, onDelete }) => {
           key={habit.id}
           onEdit={onEdit}
           onDelete={onDelete}
+
+          onComplete={onComplete}
+          isEditing={habit.isEditing}
+          onReset={onReset}
+
         />
       ))}
       <AddHabitButton onAdd={onAdd} />
