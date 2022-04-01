@@ -56,7 +56,7 @@ function App() {
   };
 
   // Increment Habit
-  const incrementHabit = (id) => {
+  const incrementStreak = (id) => {
     setHabits(
       habits.map((habit) =>
         habit.id === id && habit.streak < habit.targetStreak
@@ -66,6 +66,16 @@ function App() {
     );
   };
 
+  const ResetStreak = (id) => {
+    setHabits(
+      habits.map((habit) =>
+        habit.id === id
+          ? { ...habit, streak: 0}
+          : habit
+      )
+    );
+  }
+
   return (
     <div>
       <Header title="welcome angella to trainee 3" />
@@ -74,7 +84,8 @@ function App() {
         onAdd={addHabit}
         onEdit={editHabit}
         onDelete={deleteHabit}
-        onComplete={incrementHabit}
+        onComplete={incrementStreak}
+        onReset={ResetStreak}
       />
     </div>
   );

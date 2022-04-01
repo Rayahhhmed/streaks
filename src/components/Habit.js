@@ -5,7 +5,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import EditHabit from "./EditHabit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function Habit({ habit, onEdit, onDelete, isEditing, onComplete }) {
+export default function Habit({ habit, onEdit, onDelete, isEditing, onComplete, onReset }) {
   const [showEdit, setShowEdit] = useState(isEditing);
   const toggleEdit = () => {
     setShowEdit(!showEdit);
@@ -31,6 +31,10 @@ export default function Habit({ habit, onEdit, onDelete, isEditing, onComplete }
           <Button onClick={() => onComplete(habit.id)}> 
             Complete
             {/* <CheckIcon style={{ color: 'green' }} /> */}
+          </Button>
+
+          <Button onClick={() => onReset(habit.id)}>
+            Reset
           </Button>
 
           <Button onClick={toggleEdit}>
