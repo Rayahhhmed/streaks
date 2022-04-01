@@ -33,8 +33,14 @@ function App() {
       streak: 0,
       targetStreak: 0,
       completed: false,
+      isEditing: true,
     };
-    // Alter state by appending the new habit object to the list with the spread operator
+    // useeffect for fetch
+    // Alter state by appending the new habit object to the list with the spread operator # Kel
+    // Click into editHabbit # Kel
+
+    // button should be create # Kel
+
     setHabits([...habits, newHabit]);
   };
 
@@ -46,6 +52,7 @@ function App() {
           ? { ...habit, text: text, targetStreak: targetStreak }
           : habit
       )
+      // button should be edit # Kel
     );
   };
 

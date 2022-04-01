@@ -5,12 +5,13 @@ import CheckIcon from "@mui/icons-material/Check";
 import EditHabit from "./EditHabit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function Habit({ habit, onEdit, onDelete }) {
-  const [showEdit, setShowEdit] = useState(false);
+export default function Habit({ habit, onEdit, onDelete, isEditing }) {
+  const [showEdit, setShowEdit] = useState(isEditing);
   const toggleEdit = () => {
     setShowEdit(!showEdit);
   };
-
+  // form api access field -> to showEdit or not showEdit
+  
   return (
     <div className="habitBox">
       <div className="habit">
@@ -44,7 +45,7 @@ export default function Habit({ habit, onEdit, onDelete }) {
 
       {/* Only show the EditHabit component if toggled on */}
       {showEdit && (
-        <EditHabit habit={habit} onEdit={onEdit} onDelete={onDelete} />
+        <EditHabit habit={habit} onEdit={onEdit} onDelete={onDelete} toggleEdit={toggleEdit}/>
       )}
     </div>
   );
