@@ -45,6 +45,7 @@ function App() {
       habits.map((habit) =>
         habit.id === id && targetStreak >= 0 && targetStreak >= habit.streak
           ? { ...habit, text: text, targetStreak: parseInt(targetStreak, 10) }
+
           : habit
       )
     );
@@ -76,6 +77,7 @@ function App() {
       )
     );
   }
+
 
   return (
     <div>

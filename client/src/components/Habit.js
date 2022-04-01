@@ -28,6 +28,7 @@ export default function Habit({ habit, onEdit, onDelete, isEditing, onComplete, 
             days
           </div>
 
+
           <Button onClick={() => onComplete(habit.id)}> 
             Complete
             {/* <CheckIcon style={{ color: 'green' }} /> */}
@@ -49,7 +50,9 @@ export default function Habit({ habit, onEdit, onDelete, isEditing, onComplete, 
 
       {/* Only show the EditHabit component if toggled on */}
       {showEdit && (
+
         <EditHabit habit={habit} onEdit={onEdit} onDelete={onDelete} toggleEdit={toggleEdit}/>
+
       )}
     </div>
   );
