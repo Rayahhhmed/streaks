@@ -66,6 +66,7 @@ function App() {
     );
   };
 
+  // Resets the streak counter to zero for a habit
   const ResetStreak = (id) => {
     setHabits(
       habits.map((habit) =>
