@@ -1,28 +1,38 @@
 import "./index.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Habits from "./components/Habits";
-import { nanoid } from 'nanoid'
+import { nanoid } from "nanoid";
 
 function App() {
   // Initialise habits to an empty list
   const [habits, setHabits] = useState([
-    // Predefined habits for now
-    {
-      id: 1,
-      text: 'Have a proper sleep schedule',
-      streak: 13,
-      targetStreak: 14,
-      completed: false,
-    },
-    {
-      id: 2,
-      text: 'Be happy ;(',
-      streak: 1,
-      targetStreak: 0,
-      completed: false,
-    },
+    // // Predefined habits for now
+    // {
+    //   id: 1,
+    //   text: 'Have a proper sleep schedule',
+    //   streak: 13,
+    //   targetStreak: 14,
+    //   completed: false,
+    // },
+    // {
+    //   id: 2,
+    //   text: 'Be happy ;(',
+    //   streak: 1,
+    //   targetStreak: 0,
+    //   completed: false,
+    // },
   ]);
+
+  useEffect(() => {
+    const fetchHabits = async () => {
+      const res = await fetch("http://localhost:8000/habits");
+      const fetchedHabits = await res.json();
+      setHabits(fetchedHabits);
+    };
+
+    fetchHabits();
+  });
 
   // Add a habit
   const addHabit = (habit) => {
@@ -45,7 +55,6 @@ function App() {
       habits.map((habit) =>
         habit.id === id && targetStreak >= 0 && targetStreak >= habit.streak
           ? { ...habit, text: text, targetStreak: parseInt(targetStreak, 10) }
-
           : habit
       )
     );
@@ -61,7 +70,7 @@ function App() {
     setHabits(
       habits.map((habit) =>
         habit.id === id && habit.streak < habit.targetStreak
-          ? { ...habit, streak: habit.streak + 1}
+          ? { ...habit, streak: habit.streak + 1 }
           : habit
       )
     );
@@ -70,14 +79,9 @@ function App() {
   // Resets the streak counter to zero for a habit
   const ResetStreak = (id) => {
     setHabits(
-      habits.map((habit) =>
-        habit.id === id
-          ? { ...habit, streak: 0}
-          : habit
-      )
+      habits.map((habit) => (habit.id === id ? { ...habit, streak: 0 } : habit))
     );
-  }
-
+  };
 
   return (
     <div>

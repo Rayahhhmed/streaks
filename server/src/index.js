@@ -24,15 +24,13 @@ app.get("/habits", (req, res) => {
 app.get("/habits/:id", (req, res) => {
   // Find the habit with id in habits. habit.id is a string, created with nanoid()
   const found = habits.find((habit) => habit.id === req.params.id);
-  
+
   if (found) {
     // If a habit with the id is found, display on page.
     res.json(found);
   } else {
-    // Habit with that id was never found. 
-    res
-      .status(400)
-      .json({ msg: `No habit with the id of ${req.params.id} `});
+    // Habit with that id was never found.
+    res.status(400).json({ msg: `No habit with the id of ${req.params.id} ` });
   }
 });
 
