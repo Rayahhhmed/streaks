@@ -2,7 +2,8 @@ import { Input, InputLabel, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 
-const EditHabit = ({ habit, onEdit, onDelete }) => {
+
+const EditHabit = ({ habit, onEdit, onDelete, toggleEdit }) => {
   const [text, setText] = useState(habit.text);
   const [targetStreak, setTargetStreak] = useState(habit.targetStreak);
 
@@ -26,12 +27,15 @@ const EditHabit = ({ habit, onEdit, onDelete }) => {
           placeholder="Target Streak"
           value={targetStreak}
           size="medium"
-          min="1"
-          onChange={(e) => setTargetStreak(e.target.value)}
+          onChange={(e) => setTargetStreak((Math.max(e.target.value, 1)))}
           style={{ width: 110 }}
         />
       </div>
-      <Button onClick={() => onEdit(habit.id, text, targetStreak)}>
+
+      <Button onClick={() => {
+         onEdit(habit.id, text, targetStreak)
+         toggleEdit()}}>
+
         Save Changes
       </Button>
     </div>
@@ -39,3 +43,4 @@ const EditHabit = ({ habit, onEdit, onDelete }) => {
 };
 
 export default EditHabit;
+
