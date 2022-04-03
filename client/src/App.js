@@ -70,7 +70,11 @@ function App() {
     setHabits(
       habits.map((habit) =>
         habit.id === id && targetStreak >= 0 && targetStreak >= habit.streak
-          ? { ...habit, text: text, targetStreak: parseInt(targetStreak, 10) }
+          ? {
+              ...habit,
+              text: text ? text : habit.text,
+              targetStreak: parseInt(targetStreak, 10),
+            }
           : habit
       )
     );
@@ -88,7 +92,17 @@ function App() {
   };
 
   // Increment Habit
-  const incrementStreak = (id) => {
+  const incrementStreak = async (id) => {
+    await fetch(`http://localhost:8000/habits/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        incrementStreak: true,
+      }),
+    });
+
     setHabits(
       habits.map((habit) =>
         habit.id === id && habit.streak < habit.targetStreak
@@ -99,7 +113,17 @@ function App() {
   };
 
   // Resets the streak counter to zero for a habit
-  const resetStreak = (id) => {
+  const resetStreak = async (id) => {
+    await fetch(`http://localhost:8000/habits/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        resetStreak: true,
+      }),
+    });
+
     setHabits(
       habits.map((habit) => (habit.id === id ? { ...habit, streak: 0 } : habit))
     );

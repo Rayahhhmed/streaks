@@ -10,7 +10,12 @@ app.use(express.json());
 app.use(cors());
 
 const initHabits = () => {
-  const data = fs.readFileSync("data.json");
+  let data = "[]";
+  try {
+    data = fs.readFileSync("data.json");
+  } catch (error) {
+    fs.writeFileSync("data.json", data);
+  }
   return JSON.parse(data);
 };
 
@@ -65,6 +70,10 @@ app.put("/habits/:id", (req, res) => {
         habit.targetStreak = updatedHabit.targetStreak
           ? updatedHabit.targetStreak
           : habit.targetStreak;
+        habit.streak = updatedHabit.incrementStreak
+          ? habit.streak + 1
+          : habit.streak;
+        habit.streak = updatedHabit.resetStreak ? 0 : habit.streak;
 
         storeHabits();
         res.json({ msg: "Habit updated", habit });
