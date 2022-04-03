@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
+const uuid = require("uuid");
 
 const app = express();
 const PORT = 8000;
@@ -34,14 +35,51 @@ app.get("/habits/:id", (req, res) => {
   }
 });
 
-app.post("/habits", (req, res) => {});
+app.post("/habits", (req, res) => {
+  const newHabit = {
+    id: uuid.v4(),
+    text: req.body.text,
+    streak: 0,
+    targetStreak: req.body.targetStreak,
+    completed: false,
+    isEditing: true,
+  };
 
-app.put("/habits/:id", (req, res) => {});
+  if (!newHabit.text) {
+    return res.status(400).json({ msg: "Please include habit text" });
+  }
+
+  habits.push(newHabit);
+  storeHabits();
+  res.json(newHabit);
+});
+
+app.put("/habits/:id", (req, res) => {
+  const found = habits.find((habit) => habit.id === req.params.id);
+
+  if (found) {
+    const updatedHabit = req.body;
+    habits.forEach((habit) => {
+      if (habit.id === req.params.id) {
+        habit.text = updatedHabit.text ? updatedHabit.text : habit.text;
+        habit.targetStreak = updatedHabit.targetStreak
+          ? updatedHabit.targetStreak
+          : habit.targetStreak;
+
+        storeHabits();
+        res.json({ msg: "Habit updated", habit });
+      }
+    });
+  } else {
+    res.status(400).json({ msg: `No habit with the id of ${req.body.id}` });
+  }
+});
 
 app.delete("/habits/:id", (req, res) => {
   const deleted_habit = habits.find((habit) => habit.id === req.params.id);
   if (deleted_habit) {
     habits = habits.filter((habit) => habit.id !== req.params.id);
+    storeHabits();
     res.json(deleted_habit);
   } else {
     res
@@ -51,7 +89,6 @@ app.delete("/habits/:id", (req, res) => {
 });
 
 let habits = initHabits();
-console.log(habits);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

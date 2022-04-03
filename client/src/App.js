@@ -2,7 +2,6 @@ import "./index.css";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Habits from "./components/Habits";
-import { nanoid } from "nanoid";
 
 function App() {
   // Initialise habits to an empty list
@@ -35,22 +34,39 @@ function App() {
   });
 
   // Add a habit
-  const addHabit = (habit) => {
+  const addHabit = async (habit) => {
     // Add a new ID field to the given habit object provided from the form submission
     const newHabit = {
-      id: nanoid(),
       text: "New Habit, Edit Me!",
-      streak: 0,
       targetStreak: 1,
-      completed: false,
-      isEditing: true,
     };
 
-    setHabits([...habits, newHabit]);
+    const res = await fetch("http://localhost:8000/habits", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newHabit),
+    });
+
+    const newH = await res.json();
+
+    setHabits([...habits, newH]);
   };
 
   // Edit the Habit
-  const editHabit = (id, text, targetStreak) => {
+  const editHabit = async (id, text, targetStreak) => {
+    await fetch(`http://localhost:8000/habits/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        text: text,
+        targetStreak: targetStreak,
+      }),
+    });
+
     setHabits(
       habits.map((habit) =>
         habit.id === id && targetStreak >= 0 && targetStreak >= habit.streak
@@ -61,7 +77,13 @@ function App() {
   };
 
   // Delete Habit
-  const deleteHabit = (id) => {
+  const deleteHabit = async (id) => {
+    await fetch(`http://localhost:8000/habits/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
     setHabits(habits.filter((habit) => habit.id !== id));
   };
 
@@ -77,7 +99,7 @@ function App() {
   };
 
   // Resets the streak counter to zero for a habit
-  const ResetStreak = (id) => {
+  const resetStreak = (id) => {
     setHabits(
       habits.map((habit) => (habit.id === id ? { ...habit, streak: 0 } : habit))
     );
@@ -92,7 +114,7 @@ function App() {
         onEdit={editHabit}
         onDelete={deleteHabit}
         onComplete={incrementStreak}
-        onReset={ResetStreak}
+        onReset={resetStreak}
       />
     </div>
   );
