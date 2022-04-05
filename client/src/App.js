@@ -28,7 +28,7 @@ function App() {
     const res = await fetch("http://localhost:8000/habits", {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newHabit),
     });
@@ -43,7 +43,7 @@ function App() {
     await fetch(`http://localhost:8000/habits/${id}`, {
       method: "PUT",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         text: text,
@@ -69,7 +69,7 @@ function App() {
     await fetch(`http://localhost:8000/habits/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
     });
     setHabits(habits.filter((habit) => habit.id !== id));
@@ -80,7 +80,7 @@ function App() {
     await fetch(`http://localhost:8000/habits/${id}`, {
       method: "PUT",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         incrementStreak: true,
@@ -101,7 +101,7 @@ function App() {
     await fetch(`http://localhost:8000/habits/${id}`, {
       method: "PUT",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         resetStreak: true,
