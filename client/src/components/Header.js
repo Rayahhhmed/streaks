@@ -15,7 +15,7 @@ const Header = () => {
         </Typography>
 
         <Button variant="outlined" style={{ textTransform: "none" }}>
-          My Profile
+          About
         </Button>
       </div>
       <ColoredLine color="black" />
