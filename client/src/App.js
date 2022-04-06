@@ -18,11 +18,11 @@ function App() {
   });
 
   // Add a habit
-  const addHabit = async (habit) => {
+  const addHabit = async (text, targetStreak) => {
     // Add a new ID field to the given habit object provided from the form submission
     const newHabit = {
-      text: "New Habit, Edit Me!",
-      targetStreak: 1,
+      text,
+      targetStreak,
     };
 
     const res = await fetch("http://localhost:8000/habits", {

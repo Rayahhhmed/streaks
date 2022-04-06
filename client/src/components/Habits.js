@@ -11,7 +11,6 @@ const Habits = ({ habits, onAdd, onEdit, onDelete, onComplete, onReset }) => {
           onEdit={onEdit}
           onDelete={onDelete}
           onComplete={onComplete}
-          isEditing={habit.isEditing}
           onReset={onReset}
         />
       ))}

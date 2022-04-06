@@ -47,7 +47,6 @@ app.post("/habits", (req, res) => {
     streak: 0,
     targetStreak: req.body.targetStreak,
     completed: false,
-    isEditing: true,
   };
 
   if (!newHabit.text) {

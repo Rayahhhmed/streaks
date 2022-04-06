@@ -3,12 +3,11 @@ import { Button } from "@mui/material";
 import EditHabit from "./EditHabit";
 import EditDeleteMenu from "./EditDeleteMenu";
 
-const Habit = ({ habit, onEdit, onDelete, isEditing, onComplete, onReset }) => {
-  const [showEdit, setShowEdit] = useState(isEditing);
+const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
+  const [showEdit, setShowEdit] = useState(false);
   const toggleEdit = () => {
     setShowEdit(!showEdit);
   };
-  // form api access field -> to showEdit or not showEdit
 
   return (
     <div className="habitBox">
