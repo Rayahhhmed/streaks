@@ -1,22 +1,13 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import CheckIcon from "@mui/icons-material/Check";
 import EditHabit from "./EditHabit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import EditDeleteMenu from "./EditDeleteMenu";
 
-export default function Habit({
-  habit,
-  onEdit,
-  onDelete,
-  onComplete,
-  onReset,
-}) {
+const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
   const [showEdit, setShowEdit] = useState(false);
   const toggleEdit = () => {
     setShowEdit(!showEdit);
   };
-  // form api access field -> to showEdit or not showEdit
 
   return (
     <div className="habitBox">
@@ -41,13 +32,12 @@ export default function Habit({
 
           <Button onClick={() => onReset(habit.id)}>Reset</Button>
 
-          <Button onClick={toggleEdit}>
-            <EditIcon />
-          </Button>
-
-          <Button onClick={() => onDelete(habit.id)}>
-            <DeleteIcon style={{ color: "red" }} />
-          </Button>
+          <EditDeleteMenu
+            habit={habit}
+            onDelete={onDelete}
+            toggleEdit={toggleEdit}
+            disable={showEdit}
+          ></EditDeleteMenu>
         </h3>
       </div>
 
@@ -62,4 +52,6 @@ export default function Habit({
       )}
     </div>
   );
-}
+};
+
+export default Habit;
