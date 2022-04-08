@@ -60,6 +60,7 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
             onClick={() => {
               onReset(habit.id);
               setProgressFill(0);
+              setShowConfetti(false);
             }}
           >
             Reset
