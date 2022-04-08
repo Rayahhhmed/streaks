@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import EditHabit from "./EditHabit";
 import EditDeleteMenu from "./EditDeleteMenu";
+import Confetti from "react-dom-confetti";
 
 const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
   const [showEdit, setShowEdit] = useState(false);
@@ -10,11 +11,18 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
   };
 
   const [progressFilled, setProgressFill] = useState(
-    ((habit.streak + 1) / habit.targetStreak) * 100
+    (habit.streak / habit.targetStreak) * 100
   );
 
+  const [showConfetti, setShowConfetti] = useState(false);
+
   const incrementProgress = () => {
+    console.log(habit.targetStreak);
     setProgressFill(((habit.streak + 1) / habit.targetStreak) * 100);
+
+    if (((habit.streak + 1) / habit.targetStreak) * 100 == 100) {
+      setShowConfetti(true);
+    }
   };
 
   return (
@@ -45,7 +53,7 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
             }}
           >
             Complete
-            {/* <CheckIcon style={{ color: 'green' }} /> */}
+            <Confetti active={showConfetti} />
           </Button>
 
           <Button
@@ -65,7 +73,6 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
           ></EditDeleteMenu>
         </h3>
       </div>
-
       {/* Only show the EditHabit component if toggled on */}
       {showEdit && (
         <EditHabit
