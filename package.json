@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "react-confetti": "^6.0.1",
-    "react-dom-confetti": "^0.2.0"
-  }
-}
