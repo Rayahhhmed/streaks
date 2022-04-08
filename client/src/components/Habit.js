@@ -9,7 +9,9 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
     setShowEdit(!showEdit);
   };
 
-  const [progressFilled, setProgressFill] = useState(0);
+  const [progressFilled, setProgressFill] = useState(
+    ((habit.streak + 1) / habit.targetStreak) * 100
+  );
 
   const incrementProgress = () => {
     setProgressFill(((habit.streak + 1) / habit.targetStreak) * 100);
