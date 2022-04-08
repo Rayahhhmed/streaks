@@ -20,6 +20,7 @@ body {
   border-style: solid;
   border-color: #4cc9f0;
   border-radius: 10px;
+  /* background: linear-gradient(90deg, #c0e7ff 50%, #FFFFFF 50%); */
 }
 
 /* The habit text, streak information and the ablity to edit and check them off */

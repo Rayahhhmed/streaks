@@ -9,8 +9,19 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
     setShowEdit(!showEdit);
   };
 
+  const [progressFilled, setProgressFill] = useState(0);
+
+  const incrementProgress = () => {
+    setProgressFill(((habit.streak + 1) / habit.targetStreak) * 100);
+  };
+
   return (
-    <div className="habitBox">
+    <div
+      className="habitBox"
+      style={{
+        background: `linear-gradient(90deg, #c0e7ff ${progressFilled}%, #FFFFFF ${progressFilled}%`,
+      }}
+    >
       <div className="habit">
         <h3 className="habitText">
           {/* If text is empty: set text to 'Change me!': ooo text is sentient */}
@@ -25,12 +36,24 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
             days
           </div>
 
-          <Button onClick={() => onComplete(habit.id)}>
+          <Button
+            onClick={() => {
+              onComplete(habit.id);
+              incrementProgress();
+            }}
+          >
             Complete
             {/* <CheckIcon style={{ color: 'green' }} /> */}
           </Button>
 
-          <Button onClick={() => onReset(habit.id)}>Reset</Button>
+          <Button
+            onClick={() => {
+              onReset(habit.id);
+              setProgressFill(0);
+            }}
+          >
+            Reset
+          </Button>
 
           <EditDeleteMenu
             habit={habit}
