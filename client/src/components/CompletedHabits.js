@@ -1,17 +1,15 @@
 import { useState } from "react";
 import Habit from "./Habit";
 
-const CompletedHabits = ({ completedHabits, onComplete }) => {
-
+const CompletedHabits = ({ habits }) => {
   return (
     <div className="container">
-      <h3>COMPLETED</h3>
-      {completedHabits.map( (habit) => (
-        <Habit
-          habit={habit}
-          key={habit.id}
-        />
-      ))}
+      <h2 style={{ color: "blue", fontFamily: "sans-serif"}}>COMPLETED</h2>
+      {habits
+        .filter((habit) => habit.streak >= habit.targetStreak)
+        .map((habit) => (
+          <Habit habit={habit} key={habit.id} />
+        ))}
     </div>
   );
 };

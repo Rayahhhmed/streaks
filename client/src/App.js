@@ -7,8 +7,7 @@ import CompletedHabits from "./components/CompletedHabits";
 function App() {
   // Initialise habits to an empty list
   const [habits, setHabits] = useState([]);
-  const [habitsCompleted, setHabitsCompleted] = useState([]);
-
+  
   useEffect(() => {
     const fetchHabits = async () => {
       const res = await fetch("http://localhost:8000/habits");
@@ -97,11 +96,6 @@ function App() {
       )
     );
 
-    setHabitsCompleted(
-      habits.filter(
-        (habit) => habit.id === id && habit.streak >= habit.targetStreak
-      )
-    );
   };
 
   // Resets the streak counter to zero for a habit
@@ -135,7 +129,7 @@ function App() {
           onReset={resetStreak}
         />
 
-        <CompletedHabits completedHabits={habitsCompleted} />
+        <CompletedHabits habits={habits} />
       </div>
     </div>
   );
