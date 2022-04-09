@@ -2,6 +2,9 @@ import "./index.css";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Habits from "./components/Habits";
+import CompletedHabits from "./components/CompletedHabits";
+import background from "./background.jpg";
+
 
 function App() {
   // Initialise habits to an empty list
@@ -114,16 +117,21 @@ function App() {
   };
 
   return (
-    <div>
+    <div style={ {backgroundImage: `url(${background})`, height: "1000px"}}>
       <Header title="welcome angella to trainee 3" />
-      <Habits
-        habits={habits}
-        onAdd={addHabit}
-        onEdit={editHabit}
-        onDelete={deleteHabit}
-        onComplete={incrementStreak}
-        onReset={resetStreak}
-      />
+
+      <div className="mainContainer">
+        <Habits
+          habits={habits}
+          onAdd={addHabit}
+          onEdit={editHabit}
+          onDelete={deleteHabit}
+          onComplete={incrementStreak}
+          onReset={resetStreak}
+        />
+
+        <CompletedHabits habits={habits} />
+      </div>
     </div>
   );
 }

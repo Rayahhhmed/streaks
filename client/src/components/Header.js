@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <>
       <div className="myprofilebox">
-        <Typography variant="h4" color="primary" className="title">
-          STREAKS
+        <Typography variant="h3" color="primary" className="title">
+          Streaks
         </Typography>
 
         <Button variant="outlined" style={{ textTransform: "none" }}>

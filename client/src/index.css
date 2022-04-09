@@ -2,15 +2,26 @@
 
 body {
   font-family: "Roboto", "Comic Sans MS";
+  margin: 0;
 }
 
 .container {
   /* 600px is the minimum width of a chrome window */
-  max-width: 600px;
+  width: 700px;
 
   padding: 20px;
+  text-align: center;
 }
 
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.completedNotCompletedHeader {
+  color: grey;
+  font-family: system-ui;
+}
 /* The box containing habit information as well as the ability to edit if toggled on */
 .habitBox {
   display: flex;
