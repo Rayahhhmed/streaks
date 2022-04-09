@@ -4,6 +4,7 @@ import AddHabitButton from "./AddHabitButton";
 const Habits = ({ habits, onAdd, onEdit, onDelete, onComplete, onReset }) => {
   return (
     <div className="container">
+      <h3>NOT COMPLETED</h3>
       {habits.map((habit) => (
         <Habit
           habit={habit}

@@ -17,7 +17,6 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
   const [showConfetti, setShowConfetti] = useState(false);
 
   const incrementProgress = () => {
-    console.log(habit.targetStreak);
     setProgressFill(((habit.streak + 1) / habit.targetStreak) * 100);
 
     if (((habit.streak + 1) / habit.targetStreak) * 100 == 100) {
@@ -46,32 +45,38 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
             days
           </div>
 
-          <Button
-            onClick={() => {
-              onComplete(habit.id);
-              incrementProgress();
-            }}
-          >
-            Complete
-            <Confetti active={showConfetti} />
-          </Button>
+          {!!onComplete && (
+            <Button
+              onClick={() => {
+                onComplete(habit.id);
+                incrementProgress();
+              }}
+            >
+              Complete
+              <Confetti active={showConfetti} />
+            </Button>
+          )}
 
-          <Button
-            onClick={() => {
-              onReset(habit.id);
-              setProgressFill(0);
-              setShowConfetti(false);
-            }}
-          >
-            Reset
-          </Button>
+          {!!onReset && (
+            <Button
+              onClick={() => {
+                onReset(habit.id);
+                setProgressFill(0);
+                setShowConfetti(false);
+              }}
+            >
+              Reset
+            </Button>
+          )}
 
-          <EditDeleteMenu
-            habit={habit}
-            onDelete={onDelete}
-            toggleEdit={toggleEdit}
-            disable={showEdit}
-          ></EditDeleteMenu>
+          {!!onDelete && (
+            <EditDeleteMenu
+              habit={habit}
+              onDelete={onDelete}
+              toggleEdit={toggleEdit}
+              disable={showEdit}
+            ></EditDeleteMenu>
+          )}
         </h3>
       </div>
       {/* Only show the EditHabit component if toggled on */}

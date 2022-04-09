@@ -2,10 +2,12 @@ import "./index.css";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Habits from "./components/Habits";
+import CompletedHabits from "./components/CompletedHabits";
 
 function App() {
   // Initialise habits to an empty list
   const [habits, setHabits] = useState([]);
+  const [habitsCompleted, setHabitsCompleted] = useState([]);
 
   useEffect(() => {
     const fetchHabits = async () => {
@@ -94,6 +96,12 @@ function App() {
           : habit
       )
     );
+
+    setHabitsCompleted(
+      habits.filter(
+        (habit) => habit.id === id && habit.streak >= habit.targetStreak
+      )
+    );
   };
 
   // Resets the streak counter to zero for a habit
@@ -116,14 +124,19 @@ function App() {
   return (
     <div>
       <Header title="welcome angella to trainee 3" />
-      <Habits
-        habits={habits}
-        onAdd={addHabit}
-        onEdit={editHabit}
-        onDelete={deleteHabit}
-        onComplete={incrementStreak}
-        onReset={resetStreak}
-      />
+
+      <div className="mainContainer">
+        <Habits
+          habits={habits}
+          onAdd={addHabit}
+          onEdit={editHabit}
+          onDelete={deleteHabit}
+          onComplete={incrementStreak}
+          onReset={resetStreak}
+        />
+
+        <CompletedHabits completedHabits={habitsCompleted} />
+      </div>
     </div>
   );
 }
