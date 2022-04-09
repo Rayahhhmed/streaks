@@ -2,6 +2,7 @@
 
 body {
   font-family: "Roboto", "Comic Sans MS";
+  margin: 0;
 }
 
 .container {
@@ -17,6 +18,10 @@ body {
   flex-direction: row;
 }
 
+.completedNotCompletedHeader {
+  color: grey;
+  font-family: system-ui;
+}
 /* The box containing habit information as well as the ability to edit if toggled on */
 .habitBox {
   display: flex;

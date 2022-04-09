@@ -4,7 +4,7 @@ import Habit from "./Habit";
 const CompletedHabits = ({ habits }) => {
   return (
     <div className="container">
-      <h2 style={{ color: "blue", fontFamily: "sans-serif"}}>COMPLETED</h2>
+      <h2 className="completedNotCompletedHeader">Completed</h2>
       {habits
         .filter((habit) => habit.streak >= habit.targetStreak)
         .map((habit) => (

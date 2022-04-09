@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Habits from "./components/Habits";
 import CompletedHabits from "./components/CompletedHabits";
+import background from "./background.jpg";
+
 
 function App() {
   // Initialise habits to an empty list
   const [habits, setHabits] = useState([]);
-  
+
   useEffect(() => {
     const fetchHabits = async () => {
       const res = await fetch("http://localhost:8000/habits");
@@ -95,7 +97,6 @@ function App() {
           : habit
       )
     );
-
   };
 
   // Resets the streak counter to zero for a habit
@@ -116,7 +117,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div style={ {backgroundImage: `url(${background})`, height: "1000px"}}>
       <Header title="welcome angella to trainee 3" />
 
       <div className="mainContainer">
