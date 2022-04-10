@@ -4,7 +4,8 @@ import Header from "./components/Header";
 import Habits from "./components/Habits";
 import CompletedHabits from "./components/CompletedHabits";
 import background from "./background.jpg";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from "./components/About";
 
 function App() {
   // Initialise habits to an empty list
@@ -28,17 +29,13 @@ function App() {
       targetStreak,
     };
 
-    const res = await fetch("http://localhost:8000/habits", {
+    await fetch("http://localhost:8000/habits", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newHabit),
     });
-
-    const newH = await res.json();
-
-    setHabits([...habits, newH]);
   };
 
   // Edit the Habit
@@ -53,18 +50,6 @@ function App() {
         targetStreak: targetStreak,
       }),
     });
-
-    setHabits(
-      habits.map((habit) =>
-        habit.id === id && targetStreak >= 0 && targetStreak >= habit.streak
-          ? {
-              ...habit,
-              text: text ? text : habit.text,
-              targetStreak: parseInt(targetStreak, 10),
-            }
-          : habit
-      )
-    );
   };
 
   // Delete Habit
@@ -75,7 +60,6 @@ function App() {
         "Content-Type": "application/json",
       },
     });
-    setHabits(habits.filter((habit) => habit.id !== id));
   };
 
   // Increment Habit
@@ -89,14 +73,6 @@ function App() {
         incrementStreak: true,
       }),
     });
-
-    setHabits(
-      habits.map((habit) =>
-        habit.id === id && habit.streak < habit.targetStreak
-          ? { ...habit, streak: habit.streak + 1 }
-          : habit
-      )
-    );
   };
 
   // Resets the streak counter to zero for a habit
@@ -110,29 +86,41 @@ function App() {
         resetStreak: true,
       }),
     });
-
-    setHabits(
-      habits.map((habit) => (habit.id === id ? { ...habit, streak: 0 } : habit))
-    );
   };
 
   return (
-    <div style={ {backgroundImage: `url(${background})`, height: "1000px"}}>
-      <Header title="welcome angella to trainee 3" />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <div
+              style={{
+                backgroundImage: `url(${background})`,
+                height: "1000px",
+              }}
+            >
+              <Header redirectTo="About" redirectPath="/about" />
 
-      <div className="mainContainer">
-        <Habits
-          habits={habits}
-          onAdd={addHabit}
-          onEdit={editHabit}
-          onDelete={deleteHabit}
-          onComplete={incrementStreak}
-          onReset={resetStreak}
+              <div className="mainContainer">
+                <Habits
+                  habits={habits}
+                  onAdd={addHabit}
+                  onEdit={editHabit}
+                  onDelete={deleteHabit}
+                  onComplete={incrementStreak}
+                  onReset={resetStreak}
+                />
+
+                <CompletedHabits habits={habits} />
+              </div>
+            </div>
+          }
         />
-
-        <CompletedHabits habits={habits} />
-      </div>
-    </div>
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

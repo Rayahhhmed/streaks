@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Habit from "./Habit";
 
 const CompletedHabits = ({ habits }) => {

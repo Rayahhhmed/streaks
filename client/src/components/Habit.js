@@ -19,7 +19,7 @@ const Habit = ({ habit, onEdit, onDelete, onComplete, onReset }) => {
   const incrementProgress = () => {
     setProgressFill(((habit.streak + 1) / habit.targetStreak) * 100);
 
-    if (((habit.streak + 1) / habit.targetStreak) * 100 == 100) {
+    if (((habit.streak + 1) / habit.targetStreak) * 100 === 100) {
       setShowConfetti(true);
     }
   };
