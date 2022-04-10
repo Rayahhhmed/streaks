@@ -25,7 +25,9 @@ const EditHabit = ({ habit, onEdit, toggleEdit }) => {
           placeholder="Target Streak"
           value={targetStreak}
           size="medium"
-          onChange={(e) => setTargetStreak(Math.max(e.target.value, 1))}
+          onChange={(e) =>
+            setTargetStreak(e.target.value >= 0 ? e.target.value : 0)
+          }
           style={{ width: 110 }}
         />
       </div>
